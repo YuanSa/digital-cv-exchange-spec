@@ -7,7 +7,6 @@ A JSON-based CV specification to make it easier for you to demonstrate your carr
 We already have a *JSON Resume* for JSON-based resume standard. But it's not easy to use and the reasons are following:
 
 1. Resume is for job applying, so it doesn't make sense to update it often without a clear target. So when the time really comes for changing a job, many people usually have no preparation and have to scramble for it.
-
 2. For each different job (or even each different company), we need a specific resume to apply, which is mostly time consuming and copy-paste job.
 
 However, a CV (Curriculum Vitae), in contradictory, is an in-depth document that contains details about a person's professional experience, accomplishments and qualifications. It can be, and should be, updated often whenever you achieve something remarkable. If you have a well-maintained CV, it will be much easier to assemble a resume just by picking some shinning points from it.

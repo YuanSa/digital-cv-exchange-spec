@@ -16,7 +16,7 @@ In all objects, the key starts with `x1-`, `x2-`, `x3-` indicates this is not a 
 
 The prefixed and not prefixed version of a property can coexist. In this case, it indicates that these two property should be **shadowed merged**. The fields with a higher priority should overwrite the field with a lower priority and if the higher priority one cannot be recognized, then it should downgrade the priority level gradually until successfully recognize the data structure or finally failed and throw an error.
 
-_The rules of priority and downgrade strategies will be described in another standalone specification._
+_The rules of priority and downgrade strategies will be described in another standalone specification: **Digital CV Exchange Specification of Priority**._
 
 Custom fields are supported, but should be prefixed to avoid potential conflict with future standards.
 
@@ -49,9 +49,9 @@ The fields like this:
     },
     "main": {}, // priority of 0
     "x-meta": { // priority of 1
-        "x1-locale": "zh-CN", // priority of 11
-        "x2-locale": "zh-Hans-CN", // priority of 12
-        "x-update-date": "2023-01-01T00:00:00Z" // priority of 11
+        "x1-locale": "zh-CN", // priority of 1
+        "x2-locale": "zh-Hans-CN", // priority of 2
+        "x-update-date": "2023-01-01T00:00:00Z" // priority of 1
     }
 }
 ```
@@ -59,12 +59,12 @@ The fields like this:
 should first be treated as the following, which is in priority level 2, means it has the max priority of 2:
 
 ```JSON
-{ // priority level 12 = max(items' priorities)
+{ // priority level 2 = max(items' priorities)
     "version": "0.1.0", // priority of 0
     "meta": { // priority of 1
-        "language": "zh", // priority of 10
-        "locale": "zh-Hans-CN", // priority of 12
-        "update-date": "2023-01-01T00:00:00Z" // priority of 11
+        "language": "zh", // priority of 0
+        "locale": "zh-Hans-CN", // priority of 2
+        "update-date": "2023-01-01T00:00:00Z" // priority of 1
     },
     "main": {}, // priority of 0
 }
@@ -73,12 +73,12 @@ should first be treated as the following, which is in priority level 2, means it
 and if the current application cannot recognize the `locale` field, it should reduce 1 priority level to try the max priority of 1, which is:
 
 ```JSON
-{ // priority level 11 = max(items' priorities)
+{ // priority level 1 = max(items' priorities)
     "version": "0.1.0",
     "meta": { // priority of 1
-        "language": "zh", // priority of 10
-        "locale": "zh-CN", // priority of 11
-        "update-date": "2023-01-01T00:00:00Z" // priority of 11
+        "language": "zh", // priority of 0
+        "locale": "zh-CN", // priority of 1
+        "update-date": "2023-01-01T00:00:00Z" // priority of 1
     },
     "main": {},
 }
